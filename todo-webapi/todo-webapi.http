@@ -1,0 +1,29 @@
+@todo_webapi_HostAddress = http://localhost:5230
+
+POST {{todo_webapi_HostAddress}}/todoitems
+Content-Type: application/json
+
+{
+  "name":"walk dog",
+  "isComplete":true
+}
+
+###
+
+GET {{todo_webapi_HostAddress}}/todoitems/1
+
+###
+
+PUT {{todo_webapi_HostAddress}}/todoitems/1
+Content-Type: application/json
+
+{
+  "name": "feed fish",
+  "isComplete": false
+}
+
+###
+
+DELETE {{todo_webapi_HostAddress}}/todoitems/1
+
+###
