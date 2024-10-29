@@ -1,3 +1,5 @@
+using TodoWebApi.Model;
+
 public class TodoItemDTO
 {
     public int Id { get; set; }
