@@ -4,7 +4,7 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <RootNamespace>todo_webapi</RootNamespace>
+        <RootNamespace>pessoa_webapi</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -12,16 +12,6 @@
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.8"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.10" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Compile Remove="Model\DTO\TodoItemDTO.cs" />
-      <Compile Remove="Model\TodoDb.cs" />
-      <Compile Remove="Model\Todo.cs" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="Test\todo-webapi.http" />
     </ItemGroup>
 
 </Project>
