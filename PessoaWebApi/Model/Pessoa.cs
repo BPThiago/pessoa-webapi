@@ -14,10 +14,5 @@ namespace PessoaWebApi.Model
         {
             Enderecos = new List<Endereco>();
         }
-
-        public void AdicionaEndereco(Endereco endereco)
-        {
-            Enderecos.Add(endereco);
-        }
     }
 }
