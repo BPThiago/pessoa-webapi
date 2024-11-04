@@ -1,4 +1,4 @@
-namespace PessoaWebApi.Model
+namespace PessoaWebApi.Model.Domain
 {
     public class Endereco
     {

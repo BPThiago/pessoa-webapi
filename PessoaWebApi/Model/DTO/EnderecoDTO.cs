@@ -1,3 +1,5 @@
+using PessoaWebApi.Model.Domain;
+
 namespace PessoaWebApi.Model.DTO;
 
 public class EnderecoDTO

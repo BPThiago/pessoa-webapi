@@ -1,4 +1,5 @@
 using System.Collections;
+using PessoaWebApi.Model.Domain;
 
 namespace PessoaWebApi.Model.DTO
 {

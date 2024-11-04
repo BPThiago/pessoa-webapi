@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using PessoaWebApi.Model.Domain;
 
 namespace PessoaWebApi.Model
 {

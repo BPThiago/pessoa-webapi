@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PessoaWebApi.Model;
 using PessoaWebApi.Model.DTO;
+using PessoaWebApi.Model.Usercase.PessoaUsercase;
 
 namespace PessoaWebApi.Controller
 {
@@ -9,50 +10,32 @@ namespace PessoaWebApi.Controller
     [ApiController]
     public class PessoaController : ControllerBase
     {
-        private PessoaDb _db;
+        private IServiceProvider _serviceProvider;
 
-        public PessoaController(PessoaDb db)
+        public PessoaController(IServiceProvider serviceProvider)
         {
-            _db = db;
+            _serviceProvider = serviceProvider;
         }
 
         [HttpGet]
         public async Task<IResult> GetAllPessoas()
         {
-            var pessoas = await _db.Pessoas
-                .Include(pessoa => pessoa.Enderecos)
-                .Select(pessoa => new PessoaDTO(pessoa))
-                .ToArrayAsync();
-            return TypedResults.Ok(pessoas);
+            var usercase = _serviceProvider.GetRequiredService<GetAllPessoasUsercase>();
+            return await usercase.Execute();
         }
         
         [HttpGet("{id}")]
         public async Task<IResult> GetPessoa(int id)
         {
-            var pessoa = await _db.Pessoas
-                .Include(pessoa => pessoa.Enderecos)
-                .FirstOrDefaultAsync(pessoa => pessoa.Id == id);
-            return pessoa is not null
-                ? TypedResults.Ok(new PessoaDTO(pessoa))
-                : TypedResults.NotFound();
+            var usercase = _serviceProvider.GetRequiredService<GetPessoaUsercase>();
+            return await usercase.Execute(id);
         }
 
         [HttpPost]
         public async Task<IResult> CreatePessoa(PessoaDTO pessoaDto)
         {
-            var pessoa = new Pessoa()
-            {
-                Nome = pessoaDto.Nome,
-                Email = pessoaDto.Email,
-                Idade = pessoaDto.Idade,
-            };
-            
-            _db.Pessoas.Add(pessoa);
-            await _db.SaveChangesAsync();
-            
-            pessoaDto = new PessoaDTO(pessoa);
-            
-            return TypedResults.Created($"/{pessoa.Id}", pessoaDto);
+            var usercase = _serviceProvider.GetRequiredService<CreatePessoaUsercase>();
+            return await usercase.Execute(pessoaDto);
         }
     }
 }

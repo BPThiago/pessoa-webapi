@@ -1,6 +1,6 @@
 using PessoaWebApi.Model.DTO;
 
-namespace PessoaWebApi.Model
+namespace PessoaWebApi.Model.Domain
 {
     public class Pessoa
     {
