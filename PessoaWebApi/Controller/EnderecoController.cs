@@ -27,6 +27,10 @@ namespace PessoaWebApi.Controller
         [HttpPost]
         public async Task<IResult> CreateEndereco(EnderecoDTO enderecoDto)
         {
+            var pessoa = await _db.Pessoas.FindAsync(enderecoDto.PessoaId);
+            
+            if (pessoa is null) return TypedResults.NotFound();
+            
             var endereco = new Endereco()
             {
                 PessoaId = enderecoDto.PessoaId,
@@ -37,13 +41,9 @@ namespace PessoaWebApi.Controller
                 Bairro = enderecoDto.Bairro,
             };
             
-            _db.Enderecos.Add(endereco);
-            
-            var pessoa = await _db.Pessoas.FindAsync(enderecoDto.PessoaId);
-            
-            if (pessoa is null) return TypedResults.NotFound();
-            
             pessoa.Enderecos.Add(endereco);
+            
+            _db.Enderecos.Add(endereco);
             await _db.SaveChangesAsync();
             
             enderecoDto = new EnderecoDTO(endereco);
