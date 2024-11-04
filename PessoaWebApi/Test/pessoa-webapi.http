@@ -24,3 +24,13 @@ Content-Type: application/json
 }
 
 ###
+
+GET {{pessoa_webapi_HostAddress}}/1
+Content-Type: application/json
+
+###
+
+GET {{pessoa_webapi_HostAddress}}/endereco/1
+Content-Type: application/json
+
+###
