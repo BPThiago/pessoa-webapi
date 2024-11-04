@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using TodoWebApi.Model;
+using PessoaWebApi.Model;
 
-namespace TodoWebApi.Controller.Application
+namespace PessoaWebApi.Controller.Application
 {
     public class Program
     {
@@ -9,7 +9,7 @@ namespace TodoWebApi.Controller.Application
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddControllers();
-            builder.Services.AddDbContext<TodoDb>(opt => opt.UseInMemoryDatabase("TodoList"));
+            builder.Services.AddDbContext<PessoaDb>(opt => opt.UseInMemoryDatabase("WebAPI"));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             var app = builder.Build();

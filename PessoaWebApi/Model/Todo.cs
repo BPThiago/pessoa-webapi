@@ -1,4 +1,4 @@
-namespace TodoWebApi.Model
+namespace PessoaWebApi.Model
 {
     public class Todo
     {

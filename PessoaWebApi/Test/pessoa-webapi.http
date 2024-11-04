@@ -1,0 +1,26 @@
+@pessoa_webapi_HostAddress = http://localhost:5230
+
+POST {{pessoa_webapi_HostAddress}}
+Content-Type: application/json
+
+{
+  "nome":"Jorge",
+  "idade":17,
+  "email":"jorge@email.com"
+}
+
+###
+
+POST {{pessoa_webapi_HostAddress}}/endereco
+Content-Type: application/json
+
+{
+  "pessoaId":1,
+  "logradouro":"Jardim Jardinado",
+  "numero":42,
+  "estado": "Holy Spirit",
+  "cidade": "Serra",
+  "bairro": "Oceania"
+}
+
+###

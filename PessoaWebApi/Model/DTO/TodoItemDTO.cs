@@ -1,4 +1,4 @@
-namespace TodoWebApi.Model.DTO
+namespace PessoaWebApi.Model.DTO
 {
     public class TodoItemDTO
     {
